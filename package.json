@@ -1,0 +1,25 @@
+{
+  "name": "Fabric",
+  "displayName": "Fabric Configuration Language by BlackStork",
+  "description": "The syntax grammar for Fabric configuration language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "fabric",
+      "aliases": ["Fabric", "fabric"],
+      "extensions": [".fabric"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "fabric",
+      "scopeName": "source.hcl.fabric",
+      "path": "./syntaxes/fabric.tmLanguage.json"
+    }]
+  }
+}
