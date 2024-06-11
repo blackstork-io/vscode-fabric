@@ -19,7 +19,10 @@
     "grammars": [{
       "language": "fabric",
       "scopeName": "source.hcl.fabric",
-      "path": "./syntaxes/fabric.tmLanguage.json"
+      "path": "./syntaxes/fabric.tmLanguage.json",
+      "embeddedLanguages": {
+        "fenced_code.block.language.jq": "jq"
+      }
     }]
   }
 }
