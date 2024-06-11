@@ -48,6 +48,59 @@
         }
       }
     },
+    "query_jq_call": {
+      "begin": "(query_jq)\\s*(\\()",
+      "beginCaptures": {
+        "1": {
+          "name": "support.function.builtin.fabric"
+        },
+        "2": {
+          "name": "punctuation.section.parens.begin.fabric"
+        }
+      },
+      "comment": "Query jq call",
+      "patterns": [
+        {
+          "include": "#jq_heredoc"
+        },
+        {
+          "include": "#comments"
+        },
+        {
+          "include": "#expressions"
+        }
+      ],
+      "end": "(\\))",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.section.parens.end.fabric"
+        }
+      }
+    },
+    "jq_heredoc": {
+      "begin": "(\\<\\<\\-?)\\s*(\\w+)\\s*",
+      "beginCaptures": {
+        "1": {
+          "name": "keyword.operator.heredoc.fabric"
+        },
+        "2": {
+          "name": "keyword.control.heredoc.fabric"
+        }
+      },
+      "comment": "Jq Heredoc string",
+      "contentName": "fenced_code.block.language.jq",
+      "patterns": [
+        {
+          "include": "source.jq"
+        }
+      ],
+      "end": "(\\2)",
+      "endCaptures": {
+        "1": {
+          "name": "keyword.control.heredoc.fabric"
+        }
+      }
+    },
     "attribute_definition": {
       "captures": {
         "1": {
@@ -228,6 +281,9 @@
         },
         {
           "include": "#attribute_access"
+        },
+        {
+          "include": "#query_jq_call"
         },
         {
           "include": "#functions"
