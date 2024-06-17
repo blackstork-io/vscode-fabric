@@ -98,12 +98,13 @@
           "include": "source.jq"
         }
       ],
-      "end": "(\\2)",
+      "end": "^\\s*\\2\\s*$",
       "endCaptures": {
-        "1": {
+        "0": {
           "name": "keyword.control.heredoc.fabric"
         }
-      }
+      },
+      "name": "string.unquoted.heredoc.jq.fabric"
     },
     "attribute_definition": {
       "captures": {
@@ -359,9 +360,6 @@
           "include": "#attribute_access"
         },
         {
-          "include": "#query_jq_call"
-        },
-        {
           "include": "#functions"
         },
         {
@@ -370,7 +368,7 @@
       ]
     },
     "functions": {
-      "begin": "(\\w+)(\\()",
+      "begin": "(\\w+)\\s*(\\()",
       "beginCaptures": {
         "1": {
           "patterns": [
@@ -398,6 +396,9 @@
         },
         {
           "include": "#expressions"
+        },
+        {
+          "include": "#query_jq_call"
         },
         {
           "include": "#comma"
