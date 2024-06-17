@@ -360,6 +360,9 @@
           "include": "#attribute_access"
         },
         {
+          "include": "#query_jq_call"
+        },
+        {
           "include": "#functions"
         },
         {
@@ -371,12 +374,7 @@
       "begin": "(\\w+)\\s*(\\()",
       "beginCaptures": {
         "1": {
-          "patterns": [
-            {
-              "match": "\\b(__placeholder__)\\b",
-              "name": "support.function.builtin.fabric"
-            }
-          ]
+          "name": "support.function.builtin.fabric"
         },
         "2": {
           "name": "punctuation.section.parens.begin.fabric"
@@ -396,9 +394,6 @@
         },
         {
           "include": "#expressions"
-        },
-        {
-          "include": "#query_jq_call"
         },
         {
           "include": "#comma"
@@ -514,6 +509,9 @@
         },
         {
           "include": "#heredoc"
+        },
+        {
+          "include": "#query_jq_call"
         },
         {
           "include": "#functions"
