@@ -75,7 +75,8 @@
         "1": {
           "name": "punctuation.section.parens.end.fabric"
         }
-      }
+      },
+      "name": "support.function.query_jq.fabric"
     },
     "jq_heredoc": {
       "begin": "(\\<\\<\\-?)\\s*(\\w+)\\s*",
@@ -299,7 +300,7 @@
         "1": {
           "patterns": [
             {
-              "match": "\\b(from_env_var)\\b",
+              "match": "\\b(__placeholder__)\\b",
               "name": "support.function.builtin.fabric"
             }
           ]
