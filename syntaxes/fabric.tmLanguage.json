@@ -205,7 +205,7 @@
           "patterns": [
             {
               "comment": "Known block type that supports configuration",
-              "match": "\\b(data|content)\\b",
+              "match": "\\b(data|content|publish)\\b",
               "name": "entity.name.type.fabric"
             }
           ]
@@ -390,7 +390,7 @@
     },
     "named_value_references": {
       "comment": "Constant values available in Fabric context",
-      "match": "\\b(content|data|section|config|document)\\b",
+      "match": "\\b(content|data|section|config|document|publish|env)\\b",
       "name": "variable.other.readwrite.fabric"
     },
     "numeric_literals": {
@@ -617,8 +617,8 @@
         "1": {
           "patterns": [
             {
-              "comment": "Known block type that requires a plugin name",
-              "match": "\\b(data|content|section)\\b",
+              "comment": "Known block type that requires a plugin name (except section)",
+              "match": "\\b(data|content|section|publish)\\b",
               "name": "entity.name.type.fabric"
             }
           ]
@@ -650,7 +650,7 @@
           "name": "punctuation.section.block.begin.fabric"
         }
       },
-      "comment": "This will catch all supported blocks",
+      "comment": "This will catch all plugin blocks",
       "end": "\\}",
       "endCaptures": {
         "0": {
