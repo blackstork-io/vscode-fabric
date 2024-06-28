@@ -67,6 +67,9 @@
           "include": "#jq_heredoc"
         },
         {
+          "include": "#jq_string_literals"
+        },
+        {
           "include": "#comments"
         },
         {
@@ -94,6 +97,9 @@
       "contentName": "fenced_code.block.language.jq",
       "patterns": [
         {
+          "include": "#template"
+        },
+        {
           "include": "source.jq"
         }
       ],
@@ -104,6 +110,33 @@
         }
       },
       "name": "string.unquoted.heredoc.jq.fabric"
+    },
+    "jq_string_literals": {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.fabric"
+        }
+      },
+      "comment": "Strings with jq highlighting",
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.fabric"
+        }
+      },
+      "name": "string.quoted.double.fabric",
+      "patterns": [
+        {
+          "include": "#char_escapes"
+        },
+        {
+          "include": "#template"
+        },
+        {
+          "include": "source.jq"
+        }
+      ]
     },
     "attribute_definition": {
       "captures": {
@@ -410,24 +443,120 @@
       "end": "$\\n?",
       "name": "comment.line.number-sign.fabric"
     },
-    "heredoc": {
-      "begin": "(\\<\\<\\-?)\\s*(\\w+)\\s*$",
-      "beginCaptures": {
-        "1": {
-          "name": "keyword.operator.heredoc.fabric"
+    "template": {
+      "comment": "Fcl templating syntax",
+      "patterns": [
+        {
+          "comment": "Template escapes",
+          "match": "([$%]{2})\\{",
+          "captures": {
+            "1": {
+              "name": "constant.character.escape.fabric"
+            }
+          }
         },
-        "2": {
-          "name": "keyword.control.heredoc.fabric"
+        {
+          "comment": "Template interpolation",
+          "begin": "(\\$\\{)(~?)",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.interpolation.begin.fcl"
+            },
+            "2": {
+              "name": "keyword.operator.template.left.trim.fcl"
+            }
+          },
+          "contentName": "string.interpolated",
+          "endCaptures": {
+            "1": {
+              "name": "keyword.operator.template.left.trim.fcl"
+            },
+            "2": {
+              "name": "keyword.other.interpolation.begin.fcl"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#expressions"
+            }
+          ],
+          "end": "(~?)(\\})"
         }
-      },
-      "comment": "String Heredoc",
-      "end": "^\\s*\\2\\s*$",
-      "endCaptures": {
+      ]
+    },
+    "go_template_action": {
+      "comment": "Actual go template: {{...}}",
+      "begin": "\\{\\{",
+      "content": "fenced_code.block.language.go-template",
+      "captures": {
         "0": {
-          "name": "keyword.control.heredoc.fabric"
+          "name": "punctuation.section.embedded.begin.go-template"
         }
       },
-      "name": "string.unquoted.heredoc.fabric"
+      "patterns": [
+        {
+          "include": "#template"
+        },
+        {
+          "include": "source.go-template"
+        }
+      ],
+      "end": "\\}\\}"
+    },
+    "heredoc": {
+      "patterns": [
+        {
+          "begin": "(\\<\\<\\-?)\\s*((?i:got)(?:_\\w+)?)\\s*$",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.operator.heredoc.fabric"
+            },
+            "2": {
+              "name": "keyword.control.heredoc.fabric"
+            }
+          },
+          "comment": "String Heredoc",
+          "end": "^\\s*\\2\\s*$",
+          "endCaptures": {
+            "0": {
+              "name": "keyword.control.heredoc.fabric"
+            }
+          },
+          "name": "string.unquoted.heredoc.fabric",
+          "patterns": [
+            {
+              "include": "#template"
+            },
+            {
+              "include": "#go_template_action"
+            }
+          ]
+        },
+        {
+          "begin": "(\\<\\<\\-?)\\s*(\\w+)\\s*$",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.operator.heredoc.fabric"
+            },
+            "2": {
+              "name": "keyword.control.heredoc.fabric"
+            }
+          },
+          "comment": "String Heredoc",
+          "end": "^\\s*\\2\\s*$",
+          "endCaptures": {
+            "0": {
+              "name": "keyword.control.heredoc.fabric"
+            }
+          },
+          "name": "string.unquoted.heredoc.fabric",
+          "patterns": [
+            {
+              "include": "#template"
+            }
+          ]
+        }
+      ]
     },
     "language_constants": {
       "comment": "Fabric language constants",
@@ -818,6 +947,9 @@
       "patterns": [
         {
           "include": "#char_escapes"
+        },
+        {
+          "include": "#template"
         }
       ]
     }
