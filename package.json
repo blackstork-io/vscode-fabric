@@ -21,7 +21,8 @@
       "scopeName": "source.hcl.fabric",
       "path": "./syntaxes/fabric.tmLanguage.json",
       "embeddedLanguages": {
-        "fenced_code.block.language.jq": "jq"
+        "fenced_code.block.language.jq": "jq",
+        "fenced_code.block.language.go-template": "go-template"
       }
     }]
   }
