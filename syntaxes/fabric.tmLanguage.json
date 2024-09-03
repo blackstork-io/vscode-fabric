@@ -109,8 +109,7 @@
         "0": {
           "name": "keyword.control.heredoc.fabric"
         }
-      },
-      "name": "string.unquoted.heredoc.jq.fabric"
+      }
     },
     "jq_string_literals": {
       "begin": "\"",
@@ -126,7 +125,6 @@
           "name": "punctuation.definition.string.end.fabric"
         }
       },
-      "name": "string.quoted.double.fabric",
       "patterns": [
         {
           "include": "#char_escapes"
