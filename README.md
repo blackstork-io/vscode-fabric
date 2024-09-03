@@ -35,4 +35,7 @@ Contributions are always welcome!
 
 ## References
 
-The extension is inspired by [vscode-terraform](https://github.com/hashicorp/vscode-terraform) and [vscode-hcl](https://github.com/hashicorp/vscode-hcl).
+The extension is inspired by [vscode-terraform](https://github.com/hashicorp/vscode-terraform) and
+[vscode-hcl](https://github.com/hashicorp/vscode-hcl).
+
+See [fabric-nvim](https://github.com/blackstork-io/fabric-nvim) for Fabric support in [Neovim](https://neovim.io/).
